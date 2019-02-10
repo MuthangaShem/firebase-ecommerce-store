@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetproductComponent implements OnInit {
 
+	toggleField:string;
+
   constructor() { }
 
   ngOnInit() {
+  	this.toggleField = "searchMode";
+  }
+
+  toggle(filter?){
+  	if(!filter){
+  		filter = "searchMode"
+  	}
+  	else {filter = filter;}
+  	this.toggleField = filter;
   }
 
 }
