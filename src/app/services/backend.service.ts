@@ -30,4 +30,37 @@ export class BackendService {
   			})
   		})
   }
+
+  getFilterProducts(collType, filters){
+  	let fakeresponse=[{
+  		'category': 'test',
+  		'scategory': 'test Category',
+  		'name': 'Product Name',
+  		'price': '300',
+  		'_id': '124'
+  	}];
+  	return Observable.create(
+  		observer => {
+  			setTimeout(()=>{
+  				observer.next(fakeresponse)
+  			})
+  		})
+  }
+
+  setProducts(collType, formData){
+  	let fakeresponse=[{
+  		'category': 'test',
+  		'scategory': 'test Category',
+  		'name': 'Product Name',
+  		'price': '300',
+  		'_id': '124'
+  	}];
+  	return Observable.create(
+  		observer => {
+  			setTimeout(()=>{
+  				observer.next(fakeresponse)
+  			})
+  		})
+  }
+
 }

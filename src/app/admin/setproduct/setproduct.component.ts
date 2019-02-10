@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Observable } from 'rxjs';
 import { BackendService } from '../../services/backend.service';
@@ -8,7 +8,7 @@ import { BackendService } from '../../services/backend.service';
   templateUrl: './setproduct.component.html',
   styleUrls: ['./setproduct.component.css']
 })
-export class SetproductComponent implements OnInit {
+export class SetproductComponent implements OnInit, OnDestroy {
 
 	members: any[];
     dataSource: MatTableDataSource<any>;
@@ -53,7 +53,67 @@ export class SetproductComponent implements OnInit {
             this.dataSource = new MatTableDataSource(members);
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
+        },
+        (error)=>{
+        	this.error = true;
+        	this.errorMessage = error.message;
+        	this.dataLoading = false;
+        },
+        ()=>{
+        	this.error = false; this.dataLoading= false;
         });
+    }
+
+    getFilterData(filters) {
+    this.dataLoading = true;
+    this.querySubscription = this._backendService.getFilterProducts('product', filters)
+        .subscribe(members => {
+            this.members = members;
+            this.dataSource = new MatTableDataSource(members);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+        },
+        (error)=>{
+        	this.error = true;
+        	this.errorMessage = error.message;
+        	this.dataLoading = false;
+        },
+        ()=>{
+        	this.error = false; this.dataLoading= false;
+        });
+    }
+
+    setData(formData) {
+    this.dataLoading = true;
+    this.querySubscription = this._backendService.setProducts('product', formData)
+        .subscribe(members => {
+            if(members){
+            	this.savedChanges = true;
+            }
+        },
+        (error)=>{
+        	this.error = true;
+        	this.errorMessage = error.message;
+        	this.dataLoading = false;
+        },
+        ()=>{
+        	this.error = false; this.dataLoading= false;
+        });
+    }
+
+    applyFilter(filterValue: string){
+    	this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    	if (this.dataSource.paginator) {
+    		this.dataSource.paginator.firstPage();
+    	}
+    }
+
+    ngOnDestroy(){
+    	if (this.querySubscription) {
+    		// code...
+    		this.querySubscription.unsubscribe();
+    	}
     }
 
 }
