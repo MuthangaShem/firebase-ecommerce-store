@@ -18,6 +18,7 @@ export class SetproductComponent implements OnInit, OnDestroy {
     errorMessage: String = "";
     dataLoading: boolean = false;
     private querySubscription;
+    myDocData: any;
 
     profileUrl: Observable<string | null>;
     takeHostSelfie = false;
@@ -107,6 +108,50 @@ export class SetproductComponent implements OnInit, OnDestroy {
     	if (this.dataSource.paginator) {
     		this.dataSource.paginator.firstPage();
     	}
+    }
+
+    updateData(formData) {
+        formData.tags = formData.tags.split(',');
+        if (confirm("Are you sure want to update this record ?")) {
+            this.dataLoading = true;
+            this._backendService.updateProducts('product', formData).subscribe((res) => {
+                this.error = false;
+                this.errorMessage = "";
+                this.dataLoading = false;
+                this.savedChanges = true;
+                console.log('Doc Updated');
+            });
+        }
+    }
+
+    getDoc(docId) {
+        this.dataLoading = true;
+        this.querySubscription = this._backendService.getOneProductDoc('product', docId)
+            .subscribe(res => {
+                this.myDocData = res;
+                this.toggle('editMode');
+                this.dataLoading = false;
+            },
+                (error) => {
+                    this.error = true;
+                    this.errorMessage = error.message;
+                    this.dataLoading = false;
+                },
+                () => { this.error = false; this.dataLoading = false; });
+    }
+
+    deleteDoc(docId) {
+        if (confirm("Are you sure want to delete this record ?")) {
+            this.dataLoading = true;
+            this._backendService.deleteOneProductDoc('product', docId)
+            .subscribe((res) => {
+                this.error = false;
+                this.errorMessage = "";
+                this.dataLoading = false;
+                this.toggle('searchMode');
+                console.log('Doc Deleted');
+            });
+        }
     }
 
     ngOnDestroy(){

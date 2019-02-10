@@ -27,7 +27,7 @@ export class BackendService {
   		observer => {
   			setTimeout(()=>{
   				observer.next(fakeresponse)
-  			})
+  			}, 2000)
   		})
   }
 
@@ -43,23 +43,53 @@ export class BackendService {
   		observer => {
   			setTimeout(()=>{
   				observer.next(fakeresponse)
-  			})
+  			}, 2000)
   		})
   }
 
-  setProducts(collType, formData){
-  	let fakeresponse=[{
+  setProducts(collType, filters){
+  	let fakeresponse=true;
+  	return Observable.create(
+  		observer => {
+  			setTimeout(()=>{
+  				observer.next(fakeresponse)
+  			}, 2000)
+  		})
+  }
+
+  updateProducts(collType, formData){
+  	let fakeresponse=true;
+  	return Observable.create(
+  		observer => {
+  			setTimeout(()=>{
+  				observer.next(fakeresponse)
+  			}, 2000)
+  		})
+  }
+
+  getOneProductDoc(collType, docId){
+  	let fakeresponse={
   		'category': 'test',
   		'scategory': 'test Category',
   		'name': 'Product Name',
   		'price': '300',
   		'_id': '124'
-  	}];
+  	};
   	return Observable.create(
   		observer => {
   			setTimeout(()=>{
   				observer.next(fakeresponse)
-  			})
+  			}, 2000)
+  		})
+  }
+
+  deleteOneProductDoc(collType, docId){
+  	let fakeresponse=true;
+  	return Observable.create(
+  		observer => {
+  			setTimeout(()=>{
+  				observer.next(fakeresponse)
+  			}, 2000)
   		})
   }
 
