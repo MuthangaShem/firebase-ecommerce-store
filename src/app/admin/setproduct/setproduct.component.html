@@ -200,8 +200,8 @@
     <div *ngIf="takeHostSelfie" width="300">
             <button type="reset" (click)="takeHostSelfie=false;" mat-icon-button color="primary"><mat-icon>clear</mat-icon></button>
             <br>
-            <fileupload fileUrl="product" docId="{{this.myDocId}}"></fileupload>
-        </div>
+<!--             <fileupload fileUrl="product" docId="{{this.myDocId}}"></fileupload>
+ -->        </div>
         <div *ngIf="showHostSelfie" width="300">
             <button type="reset" (click)="showHostSelfie=false;" mat-icon-button color="primary"><mat-icon>clear</mat-icon></button>
             <br>
@@ -240,9 +240,9 @@
                         <button mat-icon-button matTooltip="Remove Picture" *ngIf="row.path" (click)="deleteProductPic(row._id);this.showHostSelfie=false;">
                             <mat-icon color="primary">camera_roll</mat-icon>
                         </button>
-                        <button mat-icon-button matTooltip="Take Picture" (click)="this.myDocId=row._id;this.takeHostSelfie=true;" class="label-error"
+<!--                         <button mat-icon-button matTooltip="Take Picture" (click)="this.myDocId=row._id;this.takeHostSelfie=true;" class="label-error"
                             *ngIf="!row.path" class="label-error"><mat-icon>camera_roll</mat-icon></button>
-                    <span matTooltip="Edit">
+ -->                    <span matTooltip="Edit">
                         <button mat-icon-button (click)="getDoc(row._id)">
                             <mat-icon color="primary">edit</mat-icon>
                         </button>
