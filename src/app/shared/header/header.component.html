@@ -8,7 +8,7 @@
     <span class="example-spacer"></span>
     <mat-icon class="example-icon"
       matBadge="8" matBadgePosition="before" matBadgeColor="accent">add_shopping_cart</mat-icon>
-    <mat-icon [color]="userStatusColor" class="example-icon">account_box</mat-icon>
+    <a routerLink="/settings"><mat-icon [color]="userStatusColor" class="example-icon">account_box</mat-icon></a>    
    	<mat-icon [matMenuTriggerFor]="helpMenu" class="example-icon">help</mat-icon>
 	<mat-menu #helpMenu="matMenu">
 		<div *ngIf="helpTitle=='settingshelp'" >
@@ -36,7 +36,7 @@
 			</button>
 		</a>		
 		<button mat-menu-item routerLink="/aboutus">About Us</button>
-		<button mat-menu-item routerLink="/settings">Settings</button>
+		<button mat-menu-item routerLink="/admin">settings</button>
 	</mat-menu>
     
 

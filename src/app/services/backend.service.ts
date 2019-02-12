@@ -22,6 +22,27 @@ export class BackendService {
   		'name': 'Product Name',
   		'price': '300',
   		'_id': '124'
+  	},
+  	{
+  		'category': 'test2',
+  		'scategory': 'test Category 8',
+  		'name': 'Product Name 2',
+  		'price': '500',
+  		'_id': '1214'
+  	},
+  	{
+  		'category': 'test',
+  		'scategory': 'test Category 3',
+  		'name': 'Product Name 3',
+  		'price': '30',
+  		'_id': '12'
+  	},
+  	{
+  		'category': 'test',
+  		'scategory': 'test Category 99',
+  		'name': 'Product Name 4',
+  		'price': '99',
+  		'_id': '14'
   	}];
   	return Observable.create(
   		observer => {
