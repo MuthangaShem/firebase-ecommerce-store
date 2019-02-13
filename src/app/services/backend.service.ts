@@ -114,4 +114,24 @@ export class BackendService {
   		})
   }
 
+  updateShoppingInterest(collType, docId){
+    let fakeresponse=true;
+    return Observable.create(
+      observer => {
+        setTimeout(()=>{
+          observer.next(fakeresponse)
+        }, 2000)
+      })
+  }
+
+  updateShoppingCart(collType, docId){
+    let fakeresponse=true;
+    return Observable.create(
+      observer => {
+        setTimeout(()=>{
+          observer.next(fakeresponse)
+        })
+      })
+  }
+
 }

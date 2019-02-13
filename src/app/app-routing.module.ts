@@ -8,10 +8,12 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SetproductComponent } from './admin/setproduct/setproduct.component';
 import { AdmintabComponent } from './admin/admintab/admintab.component';
+import { ProductComponent } from './user/product/product.component';
 
 const routes: Routes = [
 	{path: '', redirectTo: '/aboutus', pathMatch:'full'},
 	{path: 'settings', component: SettingsComponent},
+	{path: 'products', component: ProductComponent},
 	{path: 'admin', component: AdmintabComponent},
 	{path: 'aboutus', component: AboutusComponent},
 	{path: 'setproduct', component: SetproductComponent},
