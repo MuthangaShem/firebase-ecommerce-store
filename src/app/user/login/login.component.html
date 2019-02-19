@@ -1,12 +1,14 @@
-<dash-header pageTitle="SignIn" imageUrl="account_circle" helpType="homepage"></dash-header>
+<header pageTitle="SignIn" imageUrl="account_circle" helpType="homepage"></header>
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      <mat-icon>dashboard</mat-icon>Elish Consulting</mat-card-title>
+      <mat-icon>dashboard</mat-icon>Shem Muthanga</mat-card-title>
     <mat-card-subtitle>eCommerce App</mat-card-subtitle>
   </mat-card-header>
   <div *ngIf="afAuth.user | async as user; else showShopping">
-    <button type="button" routerLink="/shopping" mat-raised-button color="primary">Continue Shopping</button>
+    <mat-card-content>
+      <button type="button" routerLink="/shopping" mat-raised-button color="primary">Continue Shopping</button>
+    </mat-card-content>
   </div>
   <ng-template #showShopping>
     <mat-card-content>

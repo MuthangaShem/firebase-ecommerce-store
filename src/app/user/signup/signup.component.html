@@ -1,4 +1,4 @@
-<dash-header pageTitle="Sign Up" imageUrl="fiber_new"></dash-header>
+<header pageTitle="Sign Up" imageUrl="fiber_new"></header>
 <mat-card [@fallIn]='state' *ngIf="!savedChanges else showSavedChangesCard">
   <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
     <mat-card-content>
@@ -19,11 +19,11 @@
       <mat-card-actions align="start">
         <button type="submit" [disabled]="!formData.valid" mat-raised-button color="primary">Log in</button>
       </mat-card-actions>
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-form">
         <input matInput placeholder="email" name="email" #email="ngModel" ngModel required email>
       </mat-form-field>
       <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email.</mat-error>
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-form">
         <input matInput type="password" placeholder="Choose app password" name="password" #password="ngModel" ngModel required minlength="5"
           maxlength="30">
       </mat-form-field>
@@ -51,4 +51,3 @@
     <button type="button" (click)="savedChanges=false;routeLoginPage();" mat-raised-button color="primary">Close</button>
   </mat-card-actions>
 </ng-template>
-<footer></footer>
